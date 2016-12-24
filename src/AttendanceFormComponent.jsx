@@ -29,11 +29,11 @@ class AttendanceFormComponent extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-           <AttendanceFormInputComponent value='username' name='username' handler={this.handleInput} />
+           <AttendanceFormInputComponent value='' placeholder= 'e.g uczse' name='username' handler={this.handleInput} />
         </label>
         <label>
           Another name:
-           <AttendanceFormInputComponent value='realname' name='realname' handler={this.handleInput} />
+           <AttendanceFormInputComponent value='' name='realname' handler={this.handleInput} />
         </label>
         <input type="submit" value="Submit" />
       

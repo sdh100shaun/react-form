@@ -5,10 +5,8 @@ class AttendanceFormInputComponent extends React.Component{
   
   constructor(props){
     super(props);
-    this.state = {value:'',name:''};
+    this.state = {value:props.value,name:props.name,placeholder:props.placeholder};
     this.handler = this.handler.bind(this)
-    
-    this.state.name = props.name
     this.state.handler = props.handler
     
   }
@@ -18,11 +16,11 @@ class AttendanceFormInputComponent extends React.Component{
   	this.setState({
       value: e.target.value
     });
-    
+
   }
   
   render() {
-    return <input type="text" value={this.state.value} name={this.state.name} onChange={(e)=>this.handler(e)}/>
+    return <input type="text" placeholder={this.state.placeholder} value={this.state.value} name={this.state.name} onChange={(e)=>this.handler(e)}/>
   }
 }
 export default AttendanceFormInputComponent;

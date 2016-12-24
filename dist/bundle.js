@@ -46,11 +46,7 @@
 
 	'use strict';
 
-	var _Attendance = __webpack_require__(1);
-
-	var _Attendance2 = _interopRequireDefault(_Attendance);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _AttendanceFormComponent = __webpack_require__(1);
 
 /***/ },
 /* 1 */
@@ -68,6 +64,10 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _AttendanceFormInputComponent = __webpack_require__(179);
+
+	var _AttendanceFormInputComponent2 = _interopRequireDefault(_AttendanceFormInputComponent);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76,30 +76,59 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Attendance = function (_React$Component) {
-		_inherits(Attendance, _React$Component);
+	var AttendanceFormComponent = function (_React$Component) {
+	  _inherits(AttendanceFormComponent, _React$Component);
 
-		function Attendance() {
-			_classCallCheck(this, Attendance);
+	  function AttendanceFormComponent(props) {
+	    _classCallCheck(this, AttendanceFormComponent);
 
-			return _possibleConstructorReturn(this, (Attendance.__proto__ || Object.getPrototypeOf(Attendance)).apply(this, arguments));
-		}
+	    var _this = _possibleConstructorReturn(this, (AttendanceFormComponent.__proto__ || Object.getPrototypeOf(AttendanceFormComponent)).call(this, props));
 
-		_createClass(Attendance, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'h1',
-					null,
-					'Component'
-				);
-			}
-		}]);
+	    _this.state = { value: props.value, item: props.item, properties: {} };
 
-		return Attendance;
+	    _this.handleChild = _this.handleChild.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(AttendanceFormComponent, [{
+	    key: 'handleChild',
+	    value: function handleChild(e) {
+
+	      this.state.value = e.target.value;
+	      this.state.properties[e.target.name] = e.target.value;
+	      this.setState(obj);
+	      console.log(this.state);
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      console.log(this.state);
+	      alert('A name was submitted: ' + this.state.value.trim());
+	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.handleSubmit },
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          'Name:',
+	          _react2.default.createElement(_AttendanceFormInputComponent2.default, { value: this.state.value, name: this.state.item, handler: this.handleChild })
+	        ),
+	        _react2.default.createElement('input', { type: 'submit', value: 'Submit' }),
+	        this.state.item
+	      );
+	    }
+	  }]);
+
+	  return AttendanceFormComponent;
 	}(_react2.default.Component);
 
-	_reactDom2.default.render(_react2.default.createElement(Attendance, null), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(AttendanceFormComponent, { value: 'test31', item: 'user' }), document.getElementById('app'));
 
 /***/ },
 /* 2 */
@@ -21513,6 +21542,60 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(33);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AttendanceFormInputComponent = function (_React$Component) {
+	  _inherits(AttendanceFormInputComponent, _React$Component);
+
+	  function AttendanceFormInputComponent(props) {
+	    _classCallCheck(this, AttendanceFormInputComponent);
+
+	    var _this = _possibleConstructorReturn(this, (AttendanceFormInputComponent.__proto__ || Object.getPrototypeOf(AttendanceFormInputComponent)).call(this, props));
+
+	    _this.state = props;
+	    console.log(_this.state);
+
+	    return _this;
+	  }
+
+	  _createClass(AttendanceFormInputComponent, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('input', { type: 'text', value: this.state.value, name: this.state.name, onChange: this.state.handler });
+	    }
+	  }]);
+
+	  return AttendanceFormInputComponent;
+	}(_react2.default.Component);
+
+	exports.default = AttendanceFormInputComponent;
 
 /***/ }
 /******/ ]);

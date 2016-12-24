@@ -7,10 +7,10 @@ class AttendanceFormComponent extends React.Component {
     super(props);
     this.state = {value: props.value,item:props.item,formItems:{}};
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChild = this.handleChild.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
-  handleChild(e) {
+  handleInput(e) {
      this.state.formItems[e.target.name] = e.target.value;
      console.log(this.state.formItems);
     
@@ -29,11 +29,11 @@ class AttendanceFormComponent extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-           <AttendanceFormInputComponent value='username' name='username' handler={this.handleChild} />
+           <AttendanceFormInputComponent value='username' name='username' handler={this.handleInput} />
         </label>
         <label>
           Another name:
-           <AttendanceFormInputComponent value='realname' name='realname' handler={this.handleChild} />
+           <AttendanceFormInputComponent value='realname' name='realname' handler={this.handleInput} />
         </label>
         <input type="submit" value="Submit" />
       

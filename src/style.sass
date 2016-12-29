@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
+@import '~react-dates/css/variables.scss';
+@import '~react-dates/css/styles.scss';
+$react-dates-color-primary: #cccccc !default;
+$react-dates-color-primary-dark: #aaaaaa !default;
+$react-dates-color-primary-shade-1: #C5C5C5 !default;
+$react-dates-color-primary-shade-2: #BEBEBE !default;
+$react-dates-color-primary-shade-3: #B8B8B8 !default;
+$react-dates-color-primary-shade-4: #B1B1B1 !default;
+$react-dates-color-secondary: #cccccc !default;
+
+$font-stack:    Roboto, Helvetica,sans-serif
+$primary-color: #aaaaaa
+$warning: #ff0000
+html
+  font: 16px $font-stack
+  font-weight: 100
+
+body
+
+  font: 100% $font-stack
+  color: $primary-color
+
+.btn
+  font: 100% $font-stack
+.warning
+	color: $warning
+
+label
+  font-size: 100%
+
+input[type='text']
+	margin: 0.5em 
+	display: block
+	width: 100%
+	padding: 0.3em
+	min-height: 2em
+	border-radius: 0
+	transition: box-shadow 0.3s, border 0.3s
+	&:focus
+	  border: solid 1px #707070
+      box-shadow: 0 0 5px 1px #969696
+textarea
+  margin: 1em
+.DateRangePicker
+	margin: 1.2em !important
+	clear:both
+	display:block!important

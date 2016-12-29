@@ -14,17 +14,19 @@ module.exports = {
                     presets: ['es2015', 'react']
 
                 }
+            }, {
+                test: /\.sass$/,
+                loader: ExtractTextPlugin.extract('style-loader', 'css!sass?minimize=true&indentedSyntax=true&sourceMap=true')
             },
-            {
+                , {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+                loader: ExtractTextPlugin.extract('style-loader', 'css?minimize=true&indentedSyntax=true&sourceMap=true')
             },
-           
             { test: /\.png$/, loader: "url-loader?limit=100000" },
             { test: /\.jpg$/, loader: "file-loader" }
         ]
     },
-     plugins: [
-        new ExtractTextPlugin("./dist/css/style.css")
+    plugins: [
+        new ExtractTextPlugin("./dist/css/[name].css")
     ]
 };

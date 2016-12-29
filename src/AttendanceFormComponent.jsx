@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { DateRangePicker } from 'react-dates';
 import AttendanceFormInputComponent from './AttendanceFormInputComponent.jsx';
-import 'react-dates/lib/css/_datepicker.css';
+var css = require("./style.sass");
+
+
 
 class AttendanceFormComponent extends React.Component {
    constructor(props) {
@@ -51,26 +53,43 @@ class AttendanceFormComponent extends React.Component {
   render() {
        const { focusedInput, startDate, endDate } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-
-        <label>
-          Name:
-           <AttendanceFormInputComponent value='' placeholder='e.g uczse' name='username' handler={this.handleInput} />
+<form onSubmit={this.handleSubmit}>
+  <div className="row">
+    <div className='form-group'>
+      <label className="col-md-4 col-lg-4 col-sm-12  control-label">
+        Name:
+        <AttendanceFormInputComponent value='' placeholder='e.g uczse' name='username' handler={this.handleInput} />
         </label>
-        <label>
-          Another name:
-           <AttendanceFormInputComponent value='' name='realname' handler={this.handleInput} />
+      </div>
+      <div className='form-group'>
+        <label className="col-md-4 col-lg-4 col-sm-12  control-label" htmlFor="cohort" >
+          Cohort:
+          <AttendanceFormInputComponent value={this.state.userCohort} name='cohort' handler={this.handleInput} />
+          </label>
+        </div>
+      </div><div className="row">
+      <div className='form-group'>
+        <label className="col-md-4 col-lg-4 col-sm-12  control-label">
+          Period of absence:
         </label>
-        <br />
         <DateRangePicker onDatesChange={this.onDatesChange}
-          onFocusChange={this.onFocusChange}
-          focusedInput={focusedInput}
-          startDate={startDate}
-          endDate={endDate} />
-        <br />
-        <input type="submit" value="Submit" />
-      
-      </form>
+        displayFormat='D/MM/Y'
+        onFocusChange={this.onFocusChange}
+        focusedInput={focusedInput}
+        startDate={startDate}
+        endDate={endDate} />
+      </div>
+      <div className='form-group'>
+        <label className="col-md-4 col-lg-4 col-sm-12 control-label">
+          Reason for Absence:
+        </label>
+        <textarea className='col-md-offset-1 col-md-6 form-control' value={this.state.reason} onChange={this.handleChange} />
+      </div>
+      <div className='form-group'>
+        <input type="submit" value="Submit" className="btn btn-success btn-lg" />
+      </div>
+    </div>
+  </form>
     );
   }
 }

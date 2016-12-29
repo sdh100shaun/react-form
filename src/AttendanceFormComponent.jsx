@@ -53,43 +53,54 @@ class AttendanceFormComponent extends React.Component {
   render() {
        const { focusedInput, startDate, endDate } = this.state;
     return (
-<form onSubmit={this.handleSubmit}>
+<form onSubmit={this.handleSubmit} className="form-vertical">
   <div className="row">
     <div className='form-group'>
-      <label className="col-md-4 col-lg-4 col-sm-12  control-label">
+      <label className="col-xs-10  control-label">
         Name:
+      </label>
+      <div className="col-xs-10">
         <AttendanceFormInputComponent value='' placeholder='e.g uczse' name='username' handler={this.handleInput} />
-        </label>
+        </div>
       </div>
       <div className='form-group'>
-        <label className="col-md-4 col-lg-4 col-sm-12  control-label" htmlFor="cohort" >
+        <label className="col-xs-10  control-label" htmlFor="cohort" >
           Cohort:
+        </label>
+        <div className="col-xs-10">
           <AttendanceFormInputComponent value={this.state.userCohort} name='cohort' handler={this.handleInput} />
-          </label>
+            
+          </div>
         </div>
       </div><div className="row">
       <div className='form-group'>
-        <label className="col-md-4 col-lg-4 col-sm-12  control-label">
+        <label className="col-md-10 control-label">
           Period of absence:
         </label>
-        <DateRangePicker onDatesChange={this.onDatesChange}
-        displayFormat='D/MM/Y'
-        onFocusChange={this.onFocusChange}
-        focusedInput={focusedInput}
-        startDate={startDate}
-        endDate={endDate} />
+        <div className="col-xs-10">
+          <DateRangePicker onDatesChange={this.onDatesChange}
+          displayFormat='D/MM/Y'
+          onFocusChange={this.onFocusChange}
+          focusedInput={focusedInput}
+          startDate={startDate}
+          endDate={endDate} />
+        </div>
       </div>
       <div className='form-group'>
-        <label className="col-md-4 col-lg-4 col-sm-12 control-label">
+        <label className="col-xs-10 control-label">
           Reason for Absence:
         </label>
-        <textarea className='col-md-offset-1 col-md-6 form-control' value={this.state.reason} onChange={this.handleChange} />
+        <div className="col-xs-10">
+          <textarea className='col-xs-10 form-control' value={this.state.reason} onChange={this.handleChange} />
+        </div>
       </div>
-      <div className='form-group'>
-        <input type="submit" value="Submit" className="btn btn-success btn-lg" />
+      <div className='form-group clearfix'>
+        <div className="col-xs-10">
+          <input type="submit" value="Submit" className="btn btn-success btn-lg" />
+        </div>
       </div>
     </div>
-  </form>
+  </form> 
     );
   }
 }

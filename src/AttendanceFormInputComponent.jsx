@@ -20,7 +20,7 @@ class AttendanceFormInputComponent extends React.Component{
   }
   
   render() {
-    return <input type="text" className="form-control input-md" placeholder={this.state.placeholder} value={this.state.value} name={this.state.name} onChange={(e)=>this.handler(e)}/>
+    return <input type="text" className="form-control input-md input-sm" placeholder={this.state.placeholder} value={this.state.value} name={this.state.name} onChange={(e)=>this.handler(e)}/>
   }
 }
 export default AttendanceFormInputComponent;

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "test": "mocha test/"
+    "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js \"tests/*@(.js|.jsx)\""
   },
   "author": "Shaun Hare",
   "license": "MIT",
@@ -30,9 +30,17 @@
     "bootstrap": "^4.0.0-alpha.4",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "react-addons-test-utils": "^15.4.1",
+    "redux-devtools": "^3.3.1",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }

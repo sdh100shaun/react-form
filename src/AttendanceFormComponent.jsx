@@ -38,6 +38,10 @@ class AttendanceFormComponent extends React.Component {
     
 
   }
+  handleTextAreaChange(){
+
+
+  }
 
   handleDateChange(){
 
@@ -91,12 +95,12 @@ class AttendanceFormComponent extends React.Component {
           Reason for Absence:
         </label>
         <div className="col-xs-10">
-          <textarea className='col-xs-10 form-control' value={this.state.reason} onChange={this.handleChange} />
+          <textarea className='col-xs-10 form-control' value={this.state.reason} onChange={this.handleTextAreaChange} />
         </div>
       </div>
       <div className='form-group clearfix'>
         <div className="col-xs-10">
-          <input type="submit" value="Submit" className="btn btn-success btn-lg" />
+          <input type="submit" value="Report Absence" className="btn btn-warning btn-lg" />
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import AttendanceFormInputComponent from './AttendanceFormInputComponent.jsx';
-var css = require("./style.sass");
+var css = require("../styles/style.sass");
 
 
 
@@ -12,7 +12,9 @@ class AttendanceFormComponent extends React.Component {
     super(props);
     this.state = {value: props.value,item:props.item,formItems:{}, focusedInput: null,
       startDate: null,
-      endDate: null,};
+      endDate: null,
+      excludedDays: 0,
+      excludeWeekends: props.excludeWeekends()};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -24,11 +26,32 @@ class AttendanceFormComponent extends React.Component {
     this.setState({ startDate, endDate });
     this.state.formItems['startDate'] = startDate;
     this.state.formItems['endDate'] = endDate;
+    console.log(this.state.excludeWeekends)
+    if(this.state.excludeWeekends)
+    {
+      var iDate = moment(startDate);
+      this.state.excludedDays = 0
+      while(iDate <= endDate)
+      {
+
+      
+        if(iDate.get('day') == 6 || iDate.get('day') == 0 )
+        {
+          this.state.excludedDays +=1
+         
+        }
+        iDate.add(1, 'd')
+        
+      }
+    }
+    
+    console.log(this.state.excludedDays)
 
   }
 
   onFocusChange(focusedInput) {
     this.setState({ focusedInput });
+
   }
     
   
@@ -89,7 +112,6 @@ class AttendanceFormComponent extends React.Component {
           focusedInput={focusedInput}
           startDate={startDate}
           endDate={endDate} 
-          required={()=>true}
           isOutsideRange={()=>false} />
         </div>
       </div>
@@ -111,4 +133,4 @@ class AttendanceFormComponent extends React.Component {
     );
   }
 }
-ReactDOM.render(<AttendanceFormComponent  />,document.getElementById('app'));
+ReactDOM.render(<AttendanceFormComponent excludeWeekends={()=>false} />,document.getElementById('app'));

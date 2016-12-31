@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils' // ES6
-import AttendanceFormInputComponent from '../src/AttendanceFormInputComponent.jsx';
+import AttendanceFormInputComponent from '../src/components/AttendanceFormInputComponent.jsx';
 
 import { expect } from 'chai';
 

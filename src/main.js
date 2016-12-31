@@ -1,1 +1,1 @@
-import {AttendanceFormComponent} from './AttendanceFormComponent.jsx';
+import {AttendanceFormComponent} from './components/AttendanceFormComponent.jsx';

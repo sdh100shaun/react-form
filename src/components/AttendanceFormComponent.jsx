@@ -14,7 +14,8 @@ class AttendanceFormComponent extends React.Component {
       startDate: null,
       endDate: null,
       daysAbsent: 0,
-      excludeWeekends: props.excludeWeekends()};
+      excludeWeekends: props.excludeWeekends(),
+      error: {}};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -71,8 +72,10 @@ class AttendanceFormComponent extends React.Component {
 
   }
   handleTextAreaChange(e){
-
+    
+    this.setState({error: {}});
     this.state.formItems['reason'] = e.target.value;
+
   }
 
   handleDateChange(){
@@ -81,8 +84,18 @@ class AttendanceFormComponent extends React.Component {
 
 
   handleSubmit(event) {
-    console.log(this.state);
-    alert('A name was submitted: ' + JSON.stringify(this.state.formItems));
+    
+    var reason  = this.state.formItems['reason'] == undefined ? '':this.state.formItems['reason']
+    var reportedDays = this.state.daysAbsent == undefined ? 0 :this.state.daysAbsent
+    if(reason.length < 3)
+    {
+      this.setState({error:{textarea : "Please complete this field is required",textareaclass:'error'}})
+    }
+    else
+    {
+        alert('A name was submitted: ' + JSON.stringify(this.state.formItems));
+  
+    }
     event.preventDefault();
   }
 
@@ -133,7 +146,10 @@ class AttendanceFormComponent extends React.Component {
           Reason for Absence:
         </label>
         <div className="col-xs-10">
-          <textarea className='col-xs-10 form-control' value={this.state.reason} onChange={this.handleTextAreaChange} />
+         <p className="warning"> {this.state.error.textarea }</p>
+        
+          <textarea className={'col-xs-10 form-control ' + this.state.error.textareaclass} value={this.state.reason} onChange={this.handleTextAreaChange}  />
+         
         </div>
       </div>
 

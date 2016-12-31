@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --inline",
     "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js \"tests/*@(.js|.jsx)\""
   },
   "author": "Shaun Hare",

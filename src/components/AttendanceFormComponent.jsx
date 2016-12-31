@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import AttendanceFormInputComponent from './AttendanceFormInputComponent.jsx';
+import Declaration from './Declaration.jsx';
 var css = require("../styles/style.sass");
-
 
 
 class AttendanceFormComponent extends React.Component {
@@ -13,11 +13,12 @@ class AttendanceFormComponent extends React.Component {
     this.state = {value: props.value,item:props.item,formItems:{}, focusedInput: null,
       startDate: null,
       endDate: null,
-      excludedDays: 0,
+      daysAbsent: 0,
       excludeWeekends: props.excludeWeekends()};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
     this.onDatesChange = this.onDatesChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
   }
@@ -26,18 +27,25 @@ class AttendanceFormComponent extends React.Component {
     this.setState({ startDate, endDate });
     this.state.formItems['startDate'] = startDate;
     this.state.formItems['endDate'] = endDate;
-    console.log(this.state.excludeWeekends)
+    
+    if(endDate)
+    {
+       this.state.daysAbsent = endDate.diff(startDate,'days')+1;
+    }
+   
+    var excludedDays = 0
     if(this.state.excludeWeekends)
     {
       var iDate = moment(startDate);
-      this.state.excludedDays = 0
+     
       while(iDate <= endDate)
       {
 
       
         if(iDate.get('day') == 6 || iDate.get('day') == 0 )
         {
-          this.state.excludedDays +=1
+           
+           excludedDays += 1
          
         }
         iDate.add(1, 'd')
@@ -45,7 +53,7 @@ class AttendanceFormComponent extends React.Component {
       }
     }
     
-    console.log(this.state.excludedDays)
+    this.state.daysAbsent =  this.state.daysAbsent - excludedDays
 
   }
 
@@ -62,9 +70,9 @@ class AttendanceFormComponent extends React.Component {
     
 
   }
-  handleTextAreaChange(){
+  handleTextAreaChange(e){
 
-
+    this.state.formItems['reason'] = e.target.value;
   }
 
   handleDateChange(){
@@ -80,6 +88,10 @@ class AttendanceFormComponent extends React.Component {
 
   render() {
        const { focusedInput, startDate, endDate } = this.state;
+       let confirmation = null 
+       if(this.state.daysAbsent > 0 ){
+        confirmation = <p className="alert alert-warning"> By submission of this form I declare that I have reported {this.state.daysAbsent} days absent from my course</p>;
+      }
     return (
 <form onSubmit={this.handleSubmit} className="form-vertical">
   <div className="row">
@@ -96,6 +108,7 @@ class AttendanceFormComponent extends React.Component {
           Cohort:
         </label>
         <div className="col-xs-10">
+         
           <AttendanceFormInputComponent value={this.state.userCohort} name='cohort' handler={this.handleInput} />
             
           </div>
@@ -123,14 +136,28 @@ class AttendanceFormComponent extends React.Component {
           <textarea className='col-xs-10 form-control' value={this.state.reason} onChange={this.handleTextAreaChange} />
         </div>
       </div>
+
+      
+       <div className=" col-xs-10 clearfix">
+      
+        
+        {confirmation}
+      
+      
+      </div>
+      <div className="col-xs-10 clearfix">
+        <Declaration daysAbsent={()=>this.state.daysAbsent} />
+      </div>
       <div className='form-group clearfix'>
         <div className="col-xs-10">
           <input type="submit" value="Report Absence" className="btn btn-warning btn-lg" />
         </div>
       </div>
     </div>
+    
   </form> 
+
     );
   }
 }
-ReactDOM.render(<AttendanceFormComponent excludeWeekends={()=>false} />,document.getElementById('app'));
+ReactDOM.render(<AttendanceFormComponent excludeWeekends={()=>true} />,document.getElementById('app'));

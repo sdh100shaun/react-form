@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
+import React from "react"
+import ReactDOM from "react-dom";
 
-class Declaration extends React.Component {
+class DeclarationComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -24,4 +24,4 @@ class Declaration extends React.Component {
 		return (statement)
 	}
 }
-export default Declaration 
+export default DeclarationComponent 

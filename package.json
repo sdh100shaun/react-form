@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server --inline",
-    "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js \"tests/*@(.js|.jsx)\""
+    "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js \"tests/*@(.js|.jsx)\"",
+    "npm beautify": "eslint --fix ."
   },
   "author": "Shaun Hare",
   "license": "MIT",
@@ -30,6 +31,8 @@
     "babel-preset-react": "^6.16.0",
     "bootstrap": "^4.0.0-alpha.4",
     "css-loader": "^0.26.1",
+    "eslint": "^3.12.2",
+    "eslint-plugin-react": "^6.8.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "react-addons-test-utils": "^15.4.1",
     "redux-devtools": "^3.3.1",

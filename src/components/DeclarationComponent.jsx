@@ -5,15 +5,14 @@ class DeclarationComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state={daysAbsent: props.daysAbsent}
+		this.state = { daysAbsent: props.daysAbsent }
 
 	}
 
-	render(){
+	render() {
 		let statement = null
-		
-		if(this.state.daysAbsent() >=7)
-		{
+
+		if (this.state.daysAbsent() >= 7) {
 			statement = <div>
 				<p><strong className="warning">Important - please read</strong></p>
 				<p>

@@ -1,4 +1,5 @@
 import React from "react"
+import ReactDOM from "react-dom"
 import ReactTestUtils from "react-addons-test-utils" // ES6
 import AttendanceFormInputComponent from "../src/components/AttendanceFormInputComponent.jsx"
 
@@ -22,5 +23,20 @@ describe("AttendanceFormInputComponent", () => {
        )
         const AttendanceFormInputComponentEle = ReactTestUtils.findRenderedDOMComponentWithClass(component, "input-md")
 
+    })
+    it("should update value of state on change",()=>{
+
+        let handlerFunction = function(){}
+        const component = ReactTestUtils.renderIntoDocument( <AttendanceFormInputComponent value='' placeholder='e.g uczse' name='username' handler={handlerFunction} />
+       )
+       
+       const renderedDOM = ReactDOM.findDOMNode(component)
+        
+
+       const AttendanceFormInputComponentEle = ReactTestUtils.findRenderedDOMComponentWithClass(component, "input-md")
+       
+       ReactTestUtils.Simulate.change(AttendanceFormInputComponentEle,{target: { value: 'test' }})
+
+       expect(component.state.value).to.equal("test")
     })
 })

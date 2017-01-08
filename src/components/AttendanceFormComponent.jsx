@@ -15,7 +15,7 @@ class AttendanceFormComponent extends React.Component {
       startDate: null,
       endDate: null,
       daysAbsent: 0,
-      excludeWeekends: props.excludeWeekends(),
+      excludeWeekends: (this.props.route) ? this.props.route.excludeWeekends : props.excludeWeekends(),
       error: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -173,4 +173,4 @@ class AttendanceFormComponent extends React.Component {
     )
   }
 }
-ReactDOM.render(<AttendanceFormComponent excludeWeekends={() => true} />, document.getElementById("app"));
+export default AttendanceFormComponent; 

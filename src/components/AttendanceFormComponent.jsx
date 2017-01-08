@@ -16,7 +16,8 @@ class AttendanceFormComponent extends React.Component {
       endDate: null,
       daysAbsent: 0,
       excludeWeekends: (this.props.route) ? this.props.route.excludeWeekends : props.excludeWeekends(),
-      error: {}
+      error: {},
+      orientation:(window.innerWidth < 600) ? "vertical":"horizontal"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -76,6 +77,9 @@ class AttendanceFormComponent extends React.Component {
 
   }
 
+  setOrientation(){
+    setState({orientation:'Vertical'})
+  }
   handleDateChange() {
 
   }
@@ -99,9 +103,9 @@ class AttendanceFormComponent extends React.Component {
     const { focusedInput, startDate, endDate } = this.state;
     let confirmation = null
     if (this.state.daysAbsent > 0) {
-
       confirmation = <p className="alert alert-warning"> By submission of this form I declare that I have reported {this.state.daysAbsent} days absent from my course</p>;
     }
+
     return (
       <form onSubmit={this.handleSubmit} className="form-vertical">
         <div className="row">
@@ -135,7 +139,8 @@ class AttendanceFormComponent extends React.Component {
                 focusedInput={focusedInput}
                 startDate={startDate}
                 endDate={endDate}
-                isOutsideRange={() => false} />
+                isOutsideRange={() => false} 
+                orientation={this.state.orientation} />
             </div>
           </div>
           <div className="form-group">

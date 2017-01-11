@@ -1,5 +1,18 @@
 function absences(state=[],action){
-	console.log(state,action);
-	return state;
+	
+	switch(action.type)
+	{
+		case "ADD_ABSENCE":
+			state = [
+				action.absence
+			]
+			
+			console.log(state);
+			
+			return state;
+		default:
+			return state;
+	}
+	
 }
 export default absences;

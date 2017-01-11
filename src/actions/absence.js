@@ -1,13 +1,8 @@
 //add absence
-export function addAbsence(username,cohort,startDate,endDate,reason,noHours)
+export function addAbsence(absence)
 {
 	return {
 		type:"ADD_ABSENCE",
-		username,
-		cohort,
-		startDate,
-		endDate,
-		reason,
-		noHours
+		absence
 	}
 }

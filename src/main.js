@@ -2,6 +2,7 @@ import React from 'react'
 import {render} from 'react-dom'
 
 import App from "./components/App"
+import ThanksComponent from "./components/ThanksComponent.jsx"
 
 
 
@@ -15,7 +16,8 @@ const router = (
 		<Route path="/">
 		 <IndexRoute component={App}></IndexRoute>
 		</Route>
-
+		<Route path="/thanks" component={ThanksComponent}>
+		</Route>
 	</Router>
 	</Provider>
 )

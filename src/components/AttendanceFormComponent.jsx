@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { DateRangePicker } from "react-dates";
 import moment from "moment";
 import AttendanceFormInputComponent from "./AttendanceFormInputComponent.jsx";
@@ -17,6 +16,8 @@ class AttendanceFormComponent extends React.Component {
       daysAbsent: 0,
       excludeWeekends: (this.props.route) ? this.props.route.excludeWeekends : props.excludeWeekends(),
       error: {},
+      username:'',
+      userCohort:'',
       orientation:(window.innerWidth < 600) ? "vertical":"horizontal"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,6 +68,7 @@ class AttendanceFormComponent extends React.Component {
 
 
   handleInput(e) {
+
     this.state.formItems[e.target.name] = e.target.value;
 
 
@@ -115,7 +117,7 @@ class AttendanceFormComponent extends React.Component {
               Name:
       </label>
             <div className="col-xs-10">
-              <AttendanceFormInputComponent value="" placeholder="e.g uczse" name="username" handler={this.handleInput} />
+              <AttendanceFormInputComponent value={this.state.username} placeholder="e.g uczse" name="username" handler={this.handleInput} />
             </div>
           </div>
           <div className="form-group">

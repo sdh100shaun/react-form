@@ -1,24 +1,22 @@
 import React from 'react'
 import {render} from 'react-dom'
-import AttendanceFormComponent from "./components/AttendanceFormComponent.jsx"
-import { DateRangePicker } from "react-dates";
-import moment from "moment";
-import AttendanceFormInputComponent from "./components/AttendanceFormInputComponent.jsx";
-import DeclarationComponent from "./components/DeclarationComponent.jsx";
-var css = require("./styles/style.sass");
+
+import Main from "./components/Main.jsx"
+
 
 import {Router,Route,IndexRoute,browserHistory} from 'react-router'
 
 import {Provider} from 'react-redux'
 import store,{history} from './store'
 const router = (
-	<Router history={browserHistory}>
+	<Provider store={store} >
+	<Router history={history}>
 		<Route path="/">
-		 <IndexRoute excludeWeekends={()=>true} component={AttendanceFormComponent}></IndexRoute>
+		 <IndexRoute component={Main}></IndexRoute>
 		</Route>
 
 	</Router>
-
+	</Provider>
 )
 
 render(router,document.getElementById('app'));

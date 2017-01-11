@@ -17,7 +17,7 @@ class AttendanceFormComponent extends React.Component {
       excludeWeekends: (this.props.route) ? this.props.route.excludeWeekends : props.excludeWeekends(),
       error: {},
       username:'',
-      userCohort:'',
+      cohort:'',
       orientation:(window.innerWidth < 600) ? "vertical":"horizontal"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -126,7 +126,7 @@ class AttendanceFormComponent extends React.Component {
         </label>
             <div className="col-xs-10">
 
-              <AttendanceFormInputComponent value={this.state.userCohort} name="cohort" handler={this.handleInput} />
+              <AttendanceFormInputComponent value={this.state.cohort} name="cohort" handler={this.handleInput} />
 
             </div>
           </div>

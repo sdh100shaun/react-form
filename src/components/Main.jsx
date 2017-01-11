@@ -8,6 +8,7 @@ class Main extends React.Component
 {
 	constructor(props) {
     	super(props);
+
 	}
 	render() {
 			return <div>
@@ -17,9 +18,11 @@ class Main extends React.Component
 						<p>
 						All absences due to sickness must be reported on this form on your return to the course.
 						</p>
-						<AttendanceFormComponent excludeWeekends={()=>true} />
+						<AttendanceFormComponent {...this.props} excludeWeekends={()=>true} />
+
 					</div>
 					
 	}
+	
 }
 export default Main;

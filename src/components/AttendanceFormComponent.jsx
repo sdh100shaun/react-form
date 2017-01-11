@@ -57,6 +57,8 @@ class AttendanceFormComponent extends React.Component {
 
   }
 
+
+
   onFocusChange(focusedInput) {
     this.setState({ focusedInput });
 
@@ -77,9 +79,8 @@ class AttendanceFormComponent extends React.Component {
 
   }
 
-  setOrientation(){
-    setState({orientation:'Vertical'})
-  }
+
+
   handleDateChange() {
 
   }

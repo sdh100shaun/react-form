@@ -4,11 +4,11 @@ class ThanksComponent extends React.Component {
         super(props)
     }
     render() {
-
+        const props = JSON.stringify(this.props)
         return (
 
             <p>
-                Thanks
+                {props}
             </p>
         )
     }

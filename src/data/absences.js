@@ -1,7 +1,7 @@
 const absences = [
 	{
 		username:'cczsh',
-		name:'Shaun Hare',
+		name:'Steve Sawyer',
 		cohort:'Nursing',
 		startDate:'10-01-2017',
 		endDate:'11-01-2017',

@@ -2,7 +2,52 @@ var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var DashboardPlugin = require("webpack-dashboard/plugin");
+var path = require('path');
+var isProd = (process.env.NODE_ENV === 'production');
 
+function getPlugins(){
+    var plugins = []
+
+    if(isProd)
+    {
+        plugins = [
+            new ExtractTextPlugin("./dist/css/[name].css"),
+            new webpack.DefinePlugin({
+                'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+                },
+            }),
+            new webpack.optimize.UglifyJsPlugin({
+            comments: false, // remove comments
+            compress: {
+                unused: true,
+                dead_code: true, // big one--strip code that will never execute
+                warnings: false, // good for prod apps so users can't peek behind curtain
+                drop_debugger: true,
+                conditionals: true,
+                evaluate: true,
+                drop_console: true, // strips console statements
+                sequences: true,
+                booleans: true,
+            }
+            })
+        ]
+    }
+    else
+    {
+    
+        plugins = [
+            new ExtractTextPlugin("./dist/css/[name].css"),
+            new webpack.DefinePlugin({
+                'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+                },
+            }),
+            new DashboardPlugin()
+        ]
+    }
+    return plugins;
+}
 module.exports = {
     entry: "./src/main.js",
     output: { path: __dirname, filename: "./dist/bundle.js" },
@@ -27,13 +72,5 @@ module.exports = {
             { test: /\.jpg$/, loader: "file-loader" }
         ]
     },
-    plugins: [
-        new ExtractTextPlugin("./dist/css/[name].css"),
-        new webpack.DefinePlugin({
-            'process.env': {
-              'NODE_ENV': JSON.stringify('development')
-            },
-         }),
-         new DashboardPlugin()
-    ]
+    plugins: getPlugins()
 };

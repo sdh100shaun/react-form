@@ -8,7 +8,9 @@ $react-dates-color-primary-shade-2: #BEBEBE !default;
 $react-dates-color-primary-shade-3: #B8B8B8 !default;
 $react-dates-color-primary-shade-4: #B1B1B1 !default;
 $react-dates-color-secondary: #cccccc !default;
-
+$heading: #ffffff;
+$menu-bar-text: #aaaaaa;
+$footer-text: #242847
 $font-stack:    Roboto, Helvetica,sans-serif
 $primary-color: #000000
 $warning: #ff0000
@@ -19,7 +21,7 @@ html
 body
 
   font: 100% $font-stack
-  font-weight: 100
+  font-weight: 400
   color: $primary-color
 
 .btn
@@ -29,7 +31,7 @@ body
 
 label
   font-size: 100%
-  font-weight: 100
+  font-weight: 200
   margin-top: 0.5em
 input
   margin: 0.5em
@@ -58,3 +60,36 @@ textarea
 	clear:both
 	margin: 1em
 	display:block!important
+
+.navbar-header
+  margin: 0
+.navbar
+  border-radius: 0
+  .logo
+    padding-top: 2px
+header
+ margin-bottom: 0.5em
+ border-bottom: solid 1px #cccccc
+h2
+ color: $heading
+ padding: 0 0.5em 0 0.5em
+ line-height: 1.5em
+ font-weight: 200
+h3
+ padding-left: 2.5em
+ line-height: 1em;
+
+.logout
+ a 
+  color: $menu-bar-text
+.ident
+ img 
+  width: 1.5em
+  height: auto;
+footer
+ border-top: 1px solid $menu-bar-text
+ font-weight: 100
+ color: $footer-text
+ font-size: 75%
+ p 
+  margin-top: 1em

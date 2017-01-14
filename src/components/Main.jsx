@@ -12,9 +12,7 @@ class Main extends React.Component
 	}
 	render() {
 			return <div>
-						<h2>
-							<Link to='/'>Report Absence</Link>
-						</h2>
+						
 						<p>
 						All absences due to sickness must be reported on this form on your return to the course.
 						</p>

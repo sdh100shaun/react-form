@@ -2,13 +2,41 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Attendance</title>
+		<title>Student Services  - Attendance</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 		<link href="dist/css/main.css" rel="stylesheet" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+		header {
+			background: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.4)),url("dist/images/header_background.jpg") no-repeat 100% 100%;
+			background-size: 100%;
+			min-height:10%;
+		}
+		    
+		</style>
 	</head>
 	<body>
+		<header>
+		<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+				<span class="logout"><a href='/logout'>Logout</a></span>
+            </button>
+            <img src="dist/images/UoN-White-Logo-C.svg" class="logo">
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<h2> <i class="ident"><img src="dist/images/icon.svg" /> </i> Absence Reporting</h2>
+
+		</header>	
 		<div class="container-fluid">
 			
 			<div class="row">
@@ -18,11 +46,16 @@
 					<div id="app"></div>
 				</div>
 			</div>
-			
+			<footer> 
 			<div class="row">
-				
+				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-10 clearfix">
+				<p class="pull-right">For more information please contact : <a href="http://www.nottingham.ac.uk/studentservices/contact-us/index.aspx">Student Services </a> or call <a href="tel:01157486500">0115 7486500</a></p>
+				</div>
 			</div>
+			</footer>
 		</div>
 		<script src="dist/bundle.js"></script>
+	
 	</body>
 </html>
+<!-- Log Out icon by Xinh Studio from the Noun Project --> 

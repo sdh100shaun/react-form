@@ -16,7 +16,7 @@ const router = (
 		<Route path="/">
 		 <IndexRoute component={App}></IndexRoute>
 		</Route>
-		<Route path="/thanks" component={ThanksComponent} reportedAbsence={store.getState()}>
+		<Route path="/thanks" component={ThanksComponent} store={store} >
 		</Route>
 	</Router>
 	</Provider>

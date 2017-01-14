@@ -16,7 +16,7 @@ class AttendanceFormComponent extends React.Component {
       daysAbsent: 0,
       excludeWeekends: (this.props.route) ? this.props.route.excludeWeekends : props.excludeWeekends(),
       error: {},
-      username: props.absences[0].name,
+      username:props.absences[0].username,
       cohort:props.absences[0].cohort,
       orientation:(window.innerWidth < 600) ? "vertical":"horizontal"
     };
@@ -70,7 +70,7 @@ class AttendanceFormComponent extends React.Component {
 
   handleInput(e) {
 
-    this.state.formItems[e.target.name] = e.target.value;
+    this.state[e.target.name] = e.target.value;
 
 
 
@@ -97,7 +97,8 @@ class AttendanceFormComponent extends React.Component {
       this.setState({ error: { textarea: "Please complete this field is required", textareaclass: "error" } })
     }
     else {
-      this.props.addAbsence(this.state.formItems);
+      let absence = Object.assign(this.state,this.state.formItems)
+      this.props.addAbsence(absence);
       this.props.router.push("/thanks")
       alert("A name was submitted: " + JSON.stringify(this.state.formItems));
 

@@ -31,7 +31,7 @@ module.exports = {
         new ExtractTextPlugin("./dist/css/[name].css"),
         new webpack.DefinePlugin({
             'process.env': {
-              'NODE_ENV': JSON.stringify('production')
+              'NODE_ENV': JSON.stringify('development')
             },
          }),
          new DashboardPlugin()

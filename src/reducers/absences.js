@@ -7,7 +7,7 @@ function absences(state=[],action){
 				action.absence
 			]
 			
-			console.log(state);
+		
 			
 			return state;
 		default:

@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var DashboardPlugin = require("webpack-dashboard/plugin");
 
 module.exports = {
     entry: "./src/main.js",
@@ -31,7 +32,8 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
               'NODE_ENV': JSON.stringify('production')
-            }
-  })
+            },
+         }),
+         new DashboardPlugin()
     ]
 };

@@ -16,10 +16,11 @@ const router = (
 		<Route path="/">
 		 <IndexRoute component={App}></IndexRoute>
 		</Route>
-		<Route path="/thanks" component={ThanksComponent}>
+		<Route path="/thanks" component={ThanksComponent} reportedAbsence={store.getState()}>
 		</Route>
 	</Router>
 	</Provider>
 )
+
 
 render(router,document.getElementById('app'));

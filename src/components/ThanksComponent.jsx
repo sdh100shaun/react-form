@@ -8,7 +8,7 @@ class ThanksComponent extends React.Component {
         return (
 
             <p>
-                {props}
+               {props}
             </p>
         )
     }

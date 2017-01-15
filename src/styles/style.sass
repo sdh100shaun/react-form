@@ -11,18 +11,25 @@ $react-dates-color-secondary: #cccccc !default;
 $heading: #ffffff;
 $menu-bar-text: #aaaaaa;
 $footer-text: #242847
+$sub-heading: #242847
+$sub-heading-light: #187088
 $font-stack:    Roboto, Helvetica,sans-serif
-$primary-color: #000000
+$font-stack-heading: Georgia, sans-serif
+$primary-color: #34495e
 $warning: #ff0000
+$body-background: #FAFAF8
 html
   font: 16px $font-stack
-  font-weight: 100
+  font-weight: 300
 
 body
 
   font: 100% $font-stack
   font-weight: 400
   color: $primary-color
+  background-color: $body-background
+a
+ font-weight: 900
 
 .btn
   font: 100% $font-stack
@@ -31,7 +38,7 @@ body
 
 label
   font-size: 100%
-  font-weight: 200
+  font-weight: 300
   margin-top: 0.5em
 input
   margin: 0.5em
@@ -41,7 +48,7 @@ input[type="text"]
 	margin: 0.5em 
 	display: block
 	width: 100%
-	padding: 0.3em
+	padding: 0.5em
 	min-height: 2em
 	border-radius: 0
 	transition: box-shadow 0.3s, border 0.3s
@@ -51,6 +58,7 @@ input[type="text"]
 textarea
   margin-top: 0.5em
   border-radius: 0
+  height: 6em
   &.error
    border: solid 2px #ff0000
 .alert
@@ -71,14 +79,15 @@ header
  margin-bottom: 0.5em
  border-bottom: solid 1px #cccccc
 h2
+ 
  color: $heading
  padding: 0 0.5em 0 0.5em
  line-height: 1.5em
  font-weight: 200
 h3
- padding-left: 2.5em
- line-height: 1em;
-
+ line-height: 1.5em;
+ color: $sub-heading-light
+ 
 .logout
  a 
   color: $menu-bar-text
@@ -93,3 +102,16 @@ footer
  font-size: 75%
  p 
   margin-top: 1em
+ dt
+  font-weight: bold
+  font: 100% $font-stack-heading
+  color: $sub-heading-light
+  width: 30%
+ dt::after
+  content: ":"
+ dd
+  background: none no-repeat left top
+	padding-left: 50px
+  float: left
+  clear: left
+  width: 70%

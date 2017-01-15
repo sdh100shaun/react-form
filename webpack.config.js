@@ -4,6 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var DashboardPlugin = require("webpack-dashboard/plugin");
 var path = require('path');
 var isProd = (process.env.NODE_ENV === 'production');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 function getPlugins(){
     var plugins = []
@@ -43,7 +44,25 @@ function getPlugins(){
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
                 },
             }),
-            new DashboardPlugin()
+            new DashboardPlugin(),
+            new BrowserSyncPlugin(
+      // BrowserSync options 
+      {
+        // browse to http://localhost:3000/ during development 
+        host: 'localhost',
+        port: 3000,
+        // proxy the Webpack Dev Server endpoint 
+        // (which should be serving on http://localhost:3100/) 
+        // through BrowserSync 
+        proxy: 'http://localhost:8080'
+      },
+      // plugin options 
+      {
+        // prevent BrowserSync from reloading the page 
+        // and let Webpack Dev Server take care of this 
+        reload: false
+      }
+    )
         ]
     }
     return plugins;

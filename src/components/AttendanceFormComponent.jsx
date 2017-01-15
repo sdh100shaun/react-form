@@ -14,6 +14,7 @@ class AttendanceFormComponent extends React.Component {
       startDate: null,
       endDate: null,
       daysAbsent: 0,
+      submittedDate:null,
       excludeWeekends: (this.props.route) ? this.props.route.excludeWeekends : props.excludeWeekends(),
       error: {},
       username:props.absences[0].username,
@@ -56,7 +57,7 @@ class AttendanceFormComponent extends React.Component {
     }
 
     this.state.daysAbsent = this.state.daysAbsent - excludedDays
-
+    this.state.hoursAbsent = this.state.daysAbsent * 8
   }
 
 
@@ -82,7 +83,24 @@ class AttendanceFormComponent extends React.Component {
 
   }
 
+  isValid(){
+     let isValid = true
 
+     var reason = this.state.formItems["reason"] == undefined ? "" : this.state.formItems["reason"]
+     var reportedDays = this.state.daysAbsent == undefined ? 0 : this.state.daysAbsent
+     if(reason.length < 3)
+     {
+         this.setState({ error: { textarea: "Please complete this field is required", textareaclass: "error" } })
+         isValid = false
+     }
+     if(reportedDays == 0)
+     {
+        this.setState({ error: { dates: "Please complete this field is required", dateareaclass: "error" } })
+        isValid = false
+     }
+
+     return isValid
+  }
 
   handleDateChange() {
 
@@ -91,19 +109,16 @@ class AttendanceFormComponent extends React.Component {
 
   handleSubmit(event) {
 
-    var reason = this.state.formItems["reason"] == undefined ? "" : this.state.formItems["reason"]
-    var reportedDays = this.state.daysAbsent == undefined ? 0 : this.state.daysAbsent
-    if (reason.length < 3) {
-      this.setState({ error: { textarea: "Please complete this field is required", textareaclass: "error" } })
-    }
-    else {
+    event.preventDefault();
+    if (this.isValid())  {
+      this.state.submittedDate = moment(new Date());
       let absence = Object.assign(this.state,this.state.formItems)
       this.props.addAbsence(absence);
       this.props.router.push("/thanks")
       alert("A name was submitted: " + JSON.stringify(this.state.formItems));
 
     }
-    event.preventDefault();
+    
   }
 
   render() {
@@ -139,7 +154,8 @@ class AttendanceFormComponent extends React.Component {
             <label className="col-md-10 control-label">
               Period of absence:
         </label>
-            <div className="col-xs-10">
+            <div className={"col-xs-10 " +  this.state.error.dateareaclass} >
+            <p className="warning"> {this.state.error.dates}</p>
               <DateRangePicker onDatesChange={this.onDatesChange}
                 displayFormat="D/MM/Y"
                 onFocusChange={this.onFocusChange}
@@ -157,7 +173,7 @@ class AttendanceFormComponent extends React.Component {
             <div className="col-xs-10">
               <p className="warning"> {this.state.error.textarea}</p>
 
-              <textarea className={"col-xs-10 form-control " + this.state.error.textareaclass} value={this.state.reason} onChange={this.handleTextAreaChange} />
+              <textarea cols={25} className={"col-xs-10 form-control " + this.state.error.textareaclass} value={this.state.reason} onChange={this.handleTextAreaChange} />
 
             </div>
           </div>

@@ -42,7 +42,9 @@ class ThanksComponent extends React.Component {
                 </tr>
                 </tbody>
                 </table>
+                <p>
                 <Link to='/' className="pull-right"> Go back </Link>
+                </p>
                 </div>
             </div>
         }
